@@ -1,6 +1,6 @@
+import { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
 
 interface Game {
   id: number;
@@ -27,7 +27,7 @@ const useGames = () => {
         setError(err.message);
       });
 
-    return controller.abort();
+    return () => controller.abort();
   }, []);
 
   return { games, error };
