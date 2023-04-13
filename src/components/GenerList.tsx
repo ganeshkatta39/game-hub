@@ -3,8 +3,8 @@ import useGeners from "../hooks/useGeners";
 import getCroppedImageUrl from "../services/image-urls";
 
 const GenerList = () => {
-  const { data, isLoading } = useGeners();
-
+  const { data, isLoading, error } = useGeners();
+  if (error) return null;
   if (isLoading) return <Spinner />;
 
   return (
